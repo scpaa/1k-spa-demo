@@ -1,0 +1,108 @@
+<!-- the idea is:
+* generate something like this page.
+* provide convenient ways to organize code and workflow
+* * CSS
+* * JS
+* * content/templates
+* end up with a slim and effective singelpage web app
+-->
+<html>
+ <head>
+   <style>
+   /*  <!-- CSS --> */
+  body {
+    font-family: Arial;
+    background-color: #FAFAFA;
+  }
+pre {
+  font: 12px, monospace;
+  background-color: #BBB;
+}
+
+  </style>
+</head> 
+<body>
+
+  <h1>scpaa</h1>
+  <div>
+    <ul>
+      <!-- menu -->
+      <li><a href="#/h">home</a></li>
+      <li><a href="#/n">numbers</a></li>
+      <li><a href="#/d">demo</a></li>
+    </ul>
+  </div>
+  <div id="m"></div>
+  <script type="text/javascript">
+    /*
+    * Router
+    */
+  var K = (function () {
+    function K() {
+      this.r = {};
+    }
+    K.prototype.R = function () {
+      var url = location.hash.slice(1) || '/';
+      // Get route by url:
+      var route = this.r[url];
+      // Do we have both a view and a route?
+      if (route && route.controller) {
+        route.controller();
+      }
+    };
+    K.prototype.ro = function (path, controller) {
+      this.r[path] = { controller: controller };
+    };
+    K.prototype.Listen = function (w) {
+      var _ = this;
+      w.addEventListener('load', function () { return _.R(); });
+      w.addEventListener('hashchange', function () { return _.R(); });
+    };
+    return K;
+}());
+
+    /*
+    * routes
+    */
+var r = new K();
+
+r.ro('/h', function(){
+  s("1k demo app");
+});
+
+r.ro('/n', function () {
+  s(tm());
+});
+
+r.ro('/d', function () {
+   s(demo({ t: "Features" }));
+});
+r.Listen(window);
+
+function s(t){
+	document.getElementById('m').innerHTML = t;
+}
+
+    /*
+    * templates (generated from normal
+    * looking html pages with dynamic content
+    */
+function tm(d) {
+    var l = "<p></p>1024 illustrated:<pre>";
+    // code block here
+    for (var i = 0; i < 1024; i++) {
+      l += " " + i;
+      if ((i+1)%16==0){l += "\n";}
+    }
+    l += "\n</pre>";
+    return l;
+}
+// - - - - -
+// from src/templates/demo.html
+function demo(d) {
+  var l = "<h2>"+ d['t'] +"</h2><pre>templates\nrouter\nthemes</pre>";
+  return l;
+}
+	</script>
+</body>
+

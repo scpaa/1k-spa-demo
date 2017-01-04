@@ -1,0 +1,23 @@
+{
+  "name": "1k-spa-demo",
+  "version": "0.0.1",
+  "description": "Singel page web app <1k",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "html-minifier index.html --collapse-boolean-attributes --decode-entities --html5 --collapse-whitespace --minify-js --minify-css --remove-attribute-quotes --remove-comments --remove-empty-attributes  --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-style-link-type-attributes --remove-tag-whitespace --sort-attributes--sort-class-name --trim-custom-fragments --use-short-doctype > dist/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/schpaa/1k-spa-demo"
+  },
+  "keywords": [
+    "1k",
+    "singepage",
+    "spa"
+  ],
+  "author": "Kjell Kvinge",
+  "license": "ISC",
+  "dependencies": {
+    "html-minifier": "^3.2.3"
+  }
+}
