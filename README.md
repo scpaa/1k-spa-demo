@@ -8,3 +8,8 @@ This is a demo of the output of these tools.
 See the demo:
 
 https://scpaa.github.io/1k-spa-demo/
+
+This is actual 1024b.:
+
+https://scpaa.github.io/1k-spa-demo/dist/index.html
+
